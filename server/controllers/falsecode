@@ -1,0 +1,18 @@
+  ``` var otp = otpGenerator.generate(6, {
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+      specialChars: false,
+    });
+    console.log("generated otp : " + otp);
+
+    // check if Otp is Unique or not
+    const result = await Otp.findOne({ otp: otp });
+
+    while (result) {
+      otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+        lowerCaseAlphabets: false,
+        specialChars: false,
+      });
+      result = await Otp.findOne({ otp: otp });
+    }```;
