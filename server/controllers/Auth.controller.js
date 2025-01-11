@@ -127,7 +127,7 @@ const signUP = async (req, res) => {
     } else if (otp !== recentOtp.otp) {
       return res.status(400).json({
         success: false,
-        massage: "Invalid OTP !!",
+        message: "Invalid OTP !!",
       });
     }
     // hash the password
@@ -160,7 +160,7 @@ const signUP = async (req, res) => {
     console.log(error.message);
     return res.status(500).json({
       success: false,
-      massage: "user can not be registered , Try again!!",
+      message: "user can not be registered , Try again!!",
     });
   }
 };
@@ -191,7 +191,7 @@ const login = async (req, res) => {
     if (await bcrypt.compare(password, user.password)) {
       const payload = {
         email: user.email,
-        id: user.id,
+        id: user._id,
         accountType: user.accountType,
       };
 
@@ -222,7 +222,7 @@ const login = async (req, res) => {
     console.log(error.message);
     return res.status(500).json({
       success: false,
-      massage: "User can not be logged in, Try again!!",
+      message: "User can not be logged in, Try again!!",
     });
   }
 };
@@ -289,7 +289,7 @@ const changePassword = async (req, res) => {
       message: "Password changed successfully",
     });
   } catch (error) {
-    console.log(error.massage);
+    console.log(error.message);
     return res.status(500).json({
       success: false,
       message: "Failed to change password, try again !!",

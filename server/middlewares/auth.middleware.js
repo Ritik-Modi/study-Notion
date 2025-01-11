@@ -17,7 +17,7 @@ const auth = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({
         success: false,
-        massage: "token is missing",
+        message: "token is missing",
       });
     }
 
@@ -30,7 +30,7 @@ const auth = async (req, res, next) => {
       console.log(err.message);
       return res.status(401).json({
         success: false,
-        massage: "Token is invalid",
+        message: "Token is invalid",
       });
     }
 
@@ -39,7 +39,7 @@ const auth = async (req, res, next) => {
     console.log(error.message);
     return res.status(401).json({
       success: false,
-      massage: "Something went wrong while validating the token",
+      message: "Something went wrong while validating the token",
     });
   }
 };
@@ -49,14 +49,14 @@ const isStudent = async (req, res, next) => {
     if (req.User.accountType !== "Student") {
       return res.status(403).json({
         success: false,
-        massage: "this is protected rout for the student ",
+        message: "this is protected rout for the student ",
       });
     }
     next();
   } catch (error) {
     return res.status(401).json({
       success: false,
-      massage: "Something went wrong while validating the student role",
+      message: "Something went wrong while validating the student role",
     });
   }
 };
@@ -68,14 +68,14 @@ const isInstructor = async (req, res, next) => {
     if (req.User.accountType !== "Instructor") {
       return res.status(403).json({
         success: false,
-        massage: "this is protected rout for the instructor ",
+        message: "this is protected rout for the instructor ",
       });
     }
     next();
   } catch (error) {
     return res.status(401).json({
       success: false,
-      massage: "Something went wrong while validating the instructor role",
+      message: "Something went wrong while validating the instructor role",
     });
   }
 };
@@ -87,14 +87,14 @@ const isAdmin = async (req, res, next) => {
     if (req.User.accountType !== "Admin") {
       return res.status(403).json({
         success: false,
-        massage: "this is protected rout for the Admin ",
+        message: "this is protected rout for the Admin ",
       });
     }
     next();
   } catch (error) {
     return res.status(401).json({
       success: false,
-      massage: "Something went wrong while validating the Admin role",
+      message: "Something went wrong while validating the Admin role",
     });
   }
 };
