@@ -118,7 +118,7 @@ const showAllCourse = async (req, res) => {
         thumbnail: true,
         instructor: true,
         ratingAndReview: true,
-        studentEnrolled: true,
+        studentEnrolled: true, 
       }
     )
       .populate("instructor")
